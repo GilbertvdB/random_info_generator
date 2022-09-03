@@ -1,7 +1,9 @@
 # create a random address generator
 from random import choice, randint
+import datetime
 
 
+# Names
 def random_name_male():
     """ Opens a processed file with male names and returns a name at random."""
     with open('rand_male_names', 'rt') as mn:
@@ -35,6 +37,7 @@ def random_name():
         return random_name_female()
 
 
+# Adress
 def random_address():
     """ Opens a processed file with addresses and returns one at random
     with a street number at random."""
@@ -47,6 +50,7 @@ def random_address():
     return address
 
 
+# City
 def random_city():
     """ Returns a random city from a list."""
     city_list = ['Rotterdam', 'Amsterdam', 'Den Haag', 'Groningen', 'Maastricht', 'Utrecht']
@@ -54,6 +58,7 @@ def random_city():
     return city
 
 
+# Postal codes
 def random_postal_code():
     """ Creates a postal code at random and return the result."""
     alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -64,6 +69,7 @@ def random_postal_code():
     return postal_code
 
 
+# Phone numbers
 def random_phone_number():
     """ Creates a random phone number and returns it."""
     first_part = '06-'
@@ -75,6 +81,27 @@ def random_phone_number():
     return phone_number
 
 
+# Date
+def generate_date(start_year, end_year):
+    """ Generates a random date. Returns it in the chosen format."""
+    year = randint(start_year, end_year)
+    month = randint(1, 12)
+    day = randint(1, 31)
+    birthdate = datetime.date(year, month, day)
+    return birthdate.strftime("%d-%m-%Y")
+
+
+def random_date(start_year, end_year):
+    """ Returns a valid random date. Checks for value errors (leap day,
+     correct days in the month) and returns a set date."""
+    try:
+        return generate_date(start_year, end_year)
+    except ValueError:
+        dt = datetime.date(start_year, 8, 1)
+        return dt.strftime("%d-%m-%Y")
+
+
+# Processing
 def reduce_names_to_75():
     """ Process a file and reduce the names to a maximum of 75."""
     # change male and female string doc
@@ -133,9 +160,12 @@ if __name__ == '__main__':
     # print examples
     for r in range(11):
         print(random_name(), random_name_lastname())
+        print(random_date(2009, 2010))  # 12-13 year olds
         print(random_address())
         print(random_city())
         print(random_postal_code())
         print(random_phone_number())
         print()
-        pass
+    #     pass
+
+
