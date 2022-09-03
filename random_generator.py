@@ -98,9 +98,9 @@ def reduce_names_to_75():
 
 def lastnames_cleanup():
     """ Processes the raw lastnames document and return a txt file with 100 lastnames"""
-    #lastname file cleanup
-    with open('lastnames.txt', 'rt') as l:
-        content = l.read().splitlines()
+    # lastname file cleanup
+    with open('lastnames.txt', 'rt') as ln:
+        content = ln.read().splitlines()
         print(len(content))
 
         process_content = []
@@ -131,7 +131,7 @@ def lastnames_cleanup():
 
 if __name__ == '__main__':
     # print examples
-    for i in range(11):
+    for r in range(11):
         print(random_name(), random_name_lastname())
         print(random_address())
         print(random_city())
@@ -139,9 +139,3 @@ if __name__ == '__main__':
         print(random_phone_number())
         print()
         pass
-
-
-
-
-
-
