@@ -37,7 +37,7 @@ def random_name():
         return random_name_female()
 
 
-# Adress
+# Address
 def random_address():
     """ Opens a processed file with addresses and returns one at random
     with a street number at random."""
@@ -79,6 +79,30 @@ def random_phone_number():
         second_part = second_part + digit
     phone_number = first_part + second_part
     return phone_number
+
+
+# OOP date
+class Date:
+    def __init__(self, start_year: int, end_year: int):
+        self.start_year = start_year
+        self.end_year = end_year
+
+    def generate(self):
+        """ Generates a random date. Returns it in the chosen format."""
+        year = randint(self.start_year, self.end_year)
+        month = randint(1, 12)
+        day = randint(1, 31)
+        birthdate = datetime.date(year, month, day)
+        return birthdate.strftime("%d-%m-%Y")
+
+    def random_date(self):
+        """ Returns a valid random date. Checks for value errors (leap day,
+         correct days in the month) and returns a set date."""
+        try:
+            return generate_date(self.start_year, self.end_year)
+        except ValueError:
+            dt = datetime.date(self.start_year, 8, 1)
+            return dt.strftime("%d-%m-%Y")
 
 
 # Date
@@ -158,14 +182,20 @@ def lastnames_cleanup():
 
 if __name__ == '__main__':
     # print examples
-    for r in range(11):
-        print(random_name(), random_name_lastname())
-        print(random_date(2009, 2010))  # 12-13 year olds
-        print(random_address())
-        print(random_city())
-        print(random_postal_code())
-        print(random_phone_number())
-        print()
+    # for r in range(11):
+    #     print(random_name(), random_name_lastname())
+    #     print(random_date(2009, 2010))  # 12-13 year olds
+    #     print(random_address())
+    #     print(random_city())
+    #     print(random_postal_code())
+    #     print(random_phone_number())
+    #     print()
     #     pass
 
+    A1 = Date(2009, 2010)
+    B3 = Date(2007, 2008)
+    birthdate = B3.random_date()
+
+    print(A1.random_date())
+    print(birthdate)
 
