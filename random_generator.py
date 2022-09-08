@@ -181,7 +181,7 @@ def lastnames_cleanup():
 
 
 if __name__ == '__main__':
-    # print examples
+    #  print examples
     # for r in range(11):
     #     print(random_name(), random_name_lastname())
     #     print(random_date(2009, 2010))  # 12-13 year olds
@@ -192,10 +192,14 @@ if __name__ == '__main__':
     #     print()
     #     pass
 
-    A1 = Date(2009, 2010)
-    B3 = Date(2007, 2008)
-    birthdate = B3.random_date()
+    for i in range(14):
+        print(i)
 
-    print(A1.random_date())
-    print(birthdate)
+    # testing OOP date as a class
+    # A1 = Date(2009, 2010)
+    # B3 = Date(2007, 2008)
+    # birthdate = B3.random_date()
+    #
+    # print(A1.random_date())
+    # print(birthdate)
 
